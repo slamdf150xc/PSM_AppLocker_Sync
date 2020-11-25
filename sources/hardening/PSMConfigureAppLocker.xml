@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<PSMAppLockerConfiguration>
+  <GeneralConfiguration>
+    <!-- SetAutoAndStart: To start the Application Identity service and set it to automatic startup    -->
+    <!-- mode, set this attribute's value to 'true'. Valid values: true/false.                         -->
+    <ServiceConfiguration SetAutoAndStart="true"/>
+    <RuleCollections>
+      <!-- For each rule collection, you can define the following parameters:                            -->
+      <!--     Enforce: To block applications of the relevant collection, set this attribute's value to  -->
+      <!--        'true'. To prevent AppLocker from blocking applications of the relevant type, set this -->
+      <!--        attribute's value to 'false'.                                                          -->
+      <!--     Action: To apply new AppLocker configurations and lose any existing settings, set this    -->
+      <!--        attribute's value to 'override'. To merge new configurations with the existing         -->
+      <!--        settings, set this attribute's value to 'merge'.                                       -->
+      <Executable Enforce="true" Action="Override"/>
+      <WindowsInstaller Enforce="true" Action="Override"/>
+      <Script Enforce="true" Action="Override"/>
+      <PackagedApp Enforce="true" Action="Override"/>
+      <DLL Enforce="true" Action="Override" />
+    </RuleCollections>
+  </GeneralConfiguration>
+  <!-- This part is internal and should not be modified unless instructed to by CyberArk professional -->
+  <!-- services.                                                                                       -->
+  <InternalApplications>
+    <Application Name="PSMInitSession" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMInitSession.exe" Method="Hash" />
+    <Application Name="PSMRDPClient" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMRDPClient.exe" Method="Hash" />
+    <Application Name="PSMSessionAlert" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMSessionAlert.exe" Method="Hash" />
+    <Application Name="PSMSuspendSession" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMSuspendSession.exe" Method="Hash" />
+    <Application Name="PSMMessageAlert" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMMessageAlert.exe" Method="Hash" />
+    <Application Name="PSMLauncher" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMLauncher.exe" Method="Hash" />
+    <Application Name="PSMLiveMonitoringClient" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMLiveMonitoringClient.exe" Method="Hash" />
+    <Application Name="PSMSessionSignalStatusNotification" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMSessionSignalStatusNotification.exe" Method="Hash" />
+    <Application Name="PSMWindowsEventsLogger" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMWindowsEventsLogger.exe" Method="Hash" />
+    <Application Name="UserInit" Type="Exe" SessionType="*" Path="c:\windows\system32\userinit.exe" Method="Publisher" />
+    <Application Name="SplWOW64" Type="Exe" SessionType="*" Path="c:\windows\splwow64.exe" Method="Publisher" />
+    <Application Name="RDPClip" Type="Exe" SessionType="*" Path="c:\windows\system32\rdpclip.exe" Method="Publisher" />
+    <Application Name="TSTheme" Type="Exe" SessionType="*" Path="c:\windows\system32\tstheme.exe" Method="Publisher" />
+    <Application Name="ConsoleHost" Type="Exe" SessionType="*" Path="c:\windows\system32\conhost.exe" Method="Publisher" />
+    <Application Name="TaskHost" Type="Exe" SessionType="*" Path="c:\windows\system32\taskhostw.exe" Method="Publisher" />
+    <Application Name="ErrorReporting" Type="Exe" SessionType="*" Path="c:\windows\system32\WERMGR.EXE" Method="Publisher" />
+    <Application Name="TSShadow" Type="Exe" SessionType="Admin" Path="c:\windows\system32\mstsc.exe" Method="Publisher" />
+    <Application Name="RDPSA" Type="Exe" SessionType="Regular" Path="c:\windows\system32\RDPSA.EXE" Method="Publisher" />
+    <!-- Added to support on live session for win 2012 -->
+    <Application Name="RDPSAPROXY" Type="Exe" SessionType="Regular" Path="c:\windows\system32\RDPSAPROXY.exe" Method="Publisher" />
+    <!-- Added to support on live session for win 2012 -->
+    <Application Name="RDPInit" Type="Exe" SessionType="*" Path="c:\windows\system32\rdpinit.exe" Method="Publisher" />
+    <!-- Added to support on RemoteApp for win 2012 -->
+    <Application Name="RDPShell" Type="Exe" SessionType="*" Path="c:\windows\system32\rdpshell.exe" Method="Publisher" />
+    <!-- Added to support RemoteApp for win 2012 -->
+    <Application Name="Sihost" Type="Exe" SessionType="*" Path="c:\windows\system32\sihost.exe" Method="Publisher" />
+    <!-- Added to support win 2016 -->
+    <Application Name="RunOnce" Type="Exe" SessionType="*" Path="c:\windows\system32\runonce.exe" Method="Publisher" />
+    <!-- Added to support RemoteApp on first login -->
+
+  </InternalApplications>
+
+  <AllowedApplications>
+    <!-- For each allowed application, specify the following attributes:                               -->
+    <!--    Name:   Name of the application for log proposes. Valid values: Any string value.          -->
+    <!--    Type:   Type of application to allow. Valid values: Exe/Script.                            -->
+    <!--    Path:   Path of the application executable. Valid values: exact application path,          -->
+    <!--            wildcards are allowed only if the chosen method is "Path".                         -->
+    <!--    Method: The chosen identification method for the application.                              -->
+    <!--            Valid values: Path/Hash/Publisher                                                  -->
+
+    <!-- PSM Components -->
+    <Application Name="PSMSSHClient" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMSSHClient.exe" Method="Hash" />
+    <Application Name="CAAWSWrapper" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\CAAWSWrapper.exe" Method="Hash" />
+    <Application Name="PSMAWSConsoleWithSTSDispatcher" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMAWSConsoleWithSTSDispatcher.exe" Method="Hash" />
+    <Application Name="PSMPrivateArkClientDispatcher" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMPrivateArkClientDispatcher.exe" Method="Hash" />
+    <Application Name="PSMPVWADispatcher" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMPVWADispatcher.exe" Method="Hash" />
+    <Application Name="MSSQLManagementStudioWindowsAuthenticationDispatcher" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\MSSQLManagementStudioWindowsAuthenticationDispatcher.exe" Method="Hash" />
+    <Application Name="PSMSAPGUI" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMSAPGUI.exe" Method="Hash" />
+    <Application Name="PSM3270Client" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSM3270Client.exe" Method="Hash" />
+    <Application Name="PSMWebFormDispatcher" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMWebFormDispatcher.exe" Method="Hash" />
+    <Application Name="PSMWinSCPDispatcher" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMWinSCPDispatcher.exe" Method="Hash" />
+    <Application Name="WinSCP" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\WinSCP.exe" Method="Hash" />
+    <Application Name="PSMRealVNCDispatcher" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMRealVNCDispatcher.exe" Method="Hash" />
+    <Application Name="PSMXFocus" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMXFocus.exe" Method="Hash" />
+    <Application Name="PSMTokenHolder" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMTokenHolder.exe" Method="Hash" />
+    <Application Name="PSMSessionAlert" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMSessionAlert.exe" Method="Hash" />
+    <Application Name="PSMSuspendSession" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMSuspendSession.exe" Method="Hash" />
+    <Application Name="PSMPreventWindowHide" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMPreventWindowHide.exe" Method="Hash" />
+    <Application Name="PSMMessageAlert" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMMessageAlert.exe" Method="Hash" />
+    <Application Name="PSMWindowsEventsLogger" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\PSMWindowsEventsLogger.exe" Method="Hash" />
+    <Application Name="PSM-WebAppDispatcher" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\CyberArk.PSM.WebAppDispatcher.exe" Method="Hash" />
+    <Application Name="chromedriver" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\chromedriver.exe" Method="Hash" />
+    <Application Name="IEDriverServer" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\IEDriverServer.exe" Method="Hash" />
+    <Application Name="PSM-ProgressBar" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\CyberArk\PSM\Components\CyberArk.ProgressBar.exe" Method="Hash" />
+
+    <!-- Microsoft session processes -->
+    <Application Name="ConsoleHost" Type="Exe" Path="c:\windows\system32\conhost.exe" Method="Publisher" />
+    <Application Name="TaskHost" Type="Exe" Path="c:\windows\system32\taskhostw.exe" Method="Publisher" />
+    <Application Name="ErrorReporting" Type="Exe" Path="c:\windows\system32\WERMGR.EXE" Method="Publisher" />
+
+    <!-- Oracle connection clients -->
+    <!-- If relevant, uncomment this part after installing Oracle client and Toad.
+    <Application Name="Toad" Type="Exe" Path="C:\Program Files (x86)\Quest Software\Toad for Oracle 10.6\toad.exe" Method="Publisher,Hash" />
+    <Application Name="SQLPlus" Type="Exe" Path="c:\oracle\instantclient\sqlplus.exe" Method="Hash" />
+    <Application Name="Notepad" Type="Exe" Path="c:\windows\system32\notepad.exe" Method="Publisher"/>
+    <Application Name="SDFConverter" Type="Exe" Path="C:\Program Files (x86)\Quest Software\Toad for Oracle 10.6\ClientFiles\ScriptMgr\SDFConverter.exe" Method="Hash" />
+    <Application Name="QuestScriptRunner" Type="Exe" Path="C:\Program Files (x86)\Quest Software\Toad for Oracle 10.6\qsr.exe" Method="Hash" />
+    <Application Name="OptimizerEngine" Type="Exe" Path="C:\Program Files (x86)\Quest Software\Toad for Oracle 10.6\OptimizerEngine.exe" Method="Hash" />
+    <Application Name="FormatOptions" Type="Exe" Path="C:\Program Files (x86)\Quest Software\Toad for Oracle 10.6\FmtOptions.exe" Method="Hash" />
+    <Application Name="ToadScriptRuntime" Type="Exe" Path="C:\Program Files (x86)\Quest Software\Toad for Oracle 10.6\tsr.exe" Method="Hash" />
+    <Application Name="UninstallClientFiles" Type="Exe" Path="C:\Program Files (x86)\Quest Software\Toad for Oracle 10.6\UninstallClientFiles.exe" Method="Hash" />
+    End of oracle connections comment -->
+
+    <!-- vSphere client processes -->
+    <!-- If relevant, uncomment this part after installing vSphere client (including .Net framework 2 and 3.5).
+    <Application Name="VpxClient" Type="Exe" Path="C:\Program Files (x86)\VMware\Infrastructure\Virtual Infrastructure Client\Launcher\VpxClient.exe" Method="Hash" />
+    <Application Name="VMWare-VMRC" Type="Exe" Path="C:\Program Files (x86)\VMWARE\INFRASTRUCTURE\VIRTUAL INFRASTRUCTURE CLIENT\4.0\VMWARE-VMRC.EXE" Method="Publisher" />
+    <Application Name="VMWare-RemoteMKS.EXE" Type="Exe" Path="C:\Program Files (x86)\VMWARE\INFRASTRUCTURE\VIRTUAL INFRASTRUCTURE CLIENT\4.0\VMWARE-REMOTEMKS.EXE" Method="Publisher" />
+    <Application Name="CSC" Type="Exe" Path="c:\windows\MICROSOFT.NET\FRAMEWORK\V2.0.50727\CSC.EXE" Method="Publisher" />
+    <Application Name="CVTRES" Type="Exe" Path="c:\windows\MICROSOFT.NET\FRAMEWORK\V2.0.50727\CVTRES.EXE" Method="Publisher" />
+    End of vSphere client comment -->
+
+    <!-- SQL Server Management Studio 2012 processes -->
+    <!-- If relevant, uncomment this part after installing SQL Server Management Studio 2012 processes
+    <Application Name="SSMS2012" Type="Exe" Path="C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\ManagementStudio\Ssms.exe" Method="Publisher" />               
+    End of SQL Server Management Studio 2012 processes comment -->
+
+    <!-- SAP GUI processes -->
+    <!-- If relevant, uncomment this part after installing SAP GUI processes
+    <Application Name="saplogon" Type="Exe" Path="C:\Program Files (x86)\SAP\FrontEnd\SAPgui\saplogon.exe" Method="Hash" />
+    <Application Name="SAPgui" Type="Exe" Path="C:\Program Files (x86)\SAP\FrontEnd\SAPgui\SAPgui.exe" Method="Hash" />        
+    End of SAP GUI processes comment -->
+
+    <!-- X Forwarding X Server processes -->
+    <Application Name="VcXsrv" Type="Exe" Path="C:\Program Files (x86)\VcXsrv\vcxsrv.exe" Method="Hash" />
+    <Application Name="xkbcomp" Type="Exe" Path="C:\Program Files (x86)\VcXsrv\xkbcomp.exe" Method="Hash" />
+
+    <!-- Microsoft IExplore processes -->
+    <!-- If relevant, uncomment this part to allow webform based connection clients
+    <Application Name="IExplore32" Type="Exe" Path="c:\Program Files (x86)\Internet Explorer\iexplore.exe" Method="Publisher" />
+    <Application Name="IExplore64" Type="Exe" Path="c:\Program Files (x86)\Internet Explorer\iexplore.exe" Method="Publisher" />
+    End of Microsoft IExplore processes comment -->
+
+    <!-- User configuration -->
+    <Application Name="GoogleChrome" Type="Exe" Path="C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" Method="Publisher" />
+    <Application Name="AutoIt" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\AutoIt3\AutoIt3.exe" Method="Hash" />
+    <Application Name="PrivateArk" Type="Exe" SessionType="*" Path="C:\Program Files (x86)\PrivateArk\Client\Arkui.exe" Method="Hash" />
+    <Application Name="MMC" Type="Exe" SessionType="*" Path="c:\windows\system32\mmc.exe" Method="Hash" />
+    <Application Name="LockOutStatus" Type="Exe" Path="C:\Program Files (x86)\Windows Resource Kits\Tools\lockoutstatus.exe" Method="Hash" />
+    <!-- End User configuration -->
+
+  </AllowedApplications>
+</PSMAppLockerConfiguration>

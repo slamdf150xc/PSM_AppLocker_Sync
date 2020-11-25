@@ -1,0 +1,14 @@
+---
+- hosts: PSM
+  gather_facts: False
+  tasks:
+    - name: Copy AppLocker xml to server
+      win_copy:
+        src: sources/hardening/PSMConfigureAppLocker.xml
+        dest: C:\Program Files (x86)\CyberArk\PSM\Hardening\PSMConfigureAppLocker.xml
+
+    - name: Run PSMConfigureAppLocker
+      win_command: powershell.exe -
+      args:
+        chdir: C:\Program Files (x86)\CyberArk\PSM\Hardening\
+        stdin: .\PSMConfigureAppLocker.ps1
