@@ -1,5 +1,5 @@
 ---
-- hosts: PSM
+- hosts: PSM.randa.com
   gather_facts: False
   tasks:
     - name: Copy AppLocker xml to server

@@ -5,17 +5,17 @@
     <!-- mode, set this attribute's value to 'true'. Valid values: true/false.                         -->
     <ServiceConfiguration SetAutoAndStart="true"/>
     <RuleCollections>
-      <!-- For each rule collection, you can define the following parameters:                            -->
-      <!--     Enforce: To block applications of the relevant collection, set this attribute's value to  -->
-      <!--        'true'. To prevent AppLocker from blocking applications of the relevant type, set this -->
-      <!--        attribute's value to 'false'.                                                          -->
-      <!--     Action: To apply new AppLocker configurations and lose any existing settings, set this    -->
-      <!--        attribute's value to 'override'. To merge new configurations with the existing         -->
-      <!--        settings, set this attribute's value to 'merge'.                                       -->
+	  <!-- For each rule collection, you can define the following parameters:                            -->
+	  <!--     Enforce: To block applications of the relevant collection, set this attribute's value to  -->
+	  <!--        'true'. To prevent AppLocker from blocking applications of the relevant type, set this -->
+	  <!--        attribute's value to 'false'.                                                          -->
+	  <!--     Action: To apply new AppLocker configurations and lose any existing settings, set this    -->
+	  <!--        attribute's value to 'override'. To merge new configurations with the existing         -->                                                          
+	  <!--        settings, set this attribute's value to 'merge'.                                       -->
       <Executable Enforce="true" Action="Override"/>
       <WindowsInstaller Enforce="true" Action="Override"/>
       <Script Enforce="true" Action="Override"/>
-      <PackagedApp Enforce="true" Action="Override"/>
+	  <PackagedApp Enforce="true" Action="Override"/>
       <DLL Enforce="true" Action="Override" />
     </RuleCollections>
   </GeneralConfiguration>
@@ -39,21 +39,15 @@
     <Application Name="TaskHost" Type="Exe" SessionType="*" Path="c:\windows\system32\taskhostw.exe" Method="Publisher" />
     <Application Name="ErrorReporting" Type="Exe" SessionType="*" Path="c:\windows\system32\WERMGR.EXE" Method="Publisher" />
     <Application Name="TSShadow" Type="Exe" SessionType="Admin" Path="c:\windows\system32\mstsc.exe" Method="Publisher" />
-    <Application Name="RDPSA" Type="Exe" SessionType="Regular" Path="c:\windows\system32\RDPSA.EXE" Method="Publisher" />
-    <!-- Added to support on live session for win 2012 -->
-    <Application Name="RDPSAPROXY" Type="Exe" SessionType="Regular" Path="c:\windows\system32\RDPSAPROXY.exe" Method="Publisher" />
-    <!-- Added to support on live session for win 2012 -->
-    <Application Name="RDPInit" Type="Exe" SessionType="*" Path="c:\windows\system32\rdpinit.exe" Method="Publisher" />
-    <!-- Added to support on RemoteApp for win 2012 -->
-    <Application Name="RDPShell" Type="Exe" SessionType="*" Path="c:\windows\system32\rdpshell.exe" Method="Publisher" />
-    <!-- Added to support RemoteApp for win 2012 -->
-    <Application Name="Sihost" Type="Exe" SessionType="*" Path="c:\windows\system32\sihost.exe" Method="Publisher" />
-    <!-- Added to support win 2016 -->
-    <Application Name="RunOnce" Type="Exe" SessionType="*" Path="c:\windows\system32\runonce.exe" Method="Publisher" />
-    <!-- Added to support RemoteApp on first login -->
+    <Application Name="RDPSA" Type="Exe" SessionType="Regular" Path="c:\windows\system32\RDPSA.EXE" Method="Publisher" />  <!-- Added to support on live session for win 2012 -->
+    <Application Name="RDPSAPROXY" Type="Exe" SessionType="Regular" Path="c:\windows\system32\RDPSAPROXY.exe" Method="Publisher" />  <!-- Added to support on live session for win 2012 -->
+    <Application Name="RDPInit" Type="Exe" SessionType="*" Path="c:\windows\system32\rdpinit.exe" Method="Publisher" />  <!-- Added to support on RemoteApp for win 2012 -->
+    <Application Name="RDPShell" Type="Exe" SessionType="*" Path="c:\windows\system32\rdpshell.exe" Method="Publisher" />  <!-- Added to support RemoteApp for win 2012 -->
+	  <Application Name="Sihost" Type="Exe" SessionType="*" Path="c:\windows\system32\sihost.exe" Method="Publisher" />  <!-- Added to support win 2016 -->
+    <Application Name="RunOnce" Type="Exe" SessionType="*" Path="c:\windows\system32\runonce.exe" Method="Publisher" /> <!-- Added to support RemoteApp on first login -->
 
   </InternalApplications>
-
+    
   <AllowedApplications>
     <!-- For each allowed application, specify the following attributes:                               -->
     <!--    Name:   Name of the application for log proposes. Valid values: Any string value.          -->
